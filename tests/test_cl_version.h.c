@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 
-#include <stdio.h>
-
 #include "CL/cl_version.h"
+
+#include <stdio.h>
 
 int main( void )
 {

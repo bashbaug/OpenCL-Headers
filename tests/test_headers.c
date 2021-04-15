@@ -14,10 +14,10 @@
 // limitations under the License.
 //
 
+#include "CL/cl.h"
+
 #include <inttypes.h>
 #include <stdio.h>
-
-#include "CL/cl.h"
 
 int test_char()
 {

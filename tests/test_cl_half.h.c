@@ -14,10 +14,10 @@
 // limitations under the License.
 //
 
+#include "CL/cl_half.h"
+
 #include <math.h>
 #include <stdio.h>
-
-#include "CL/cl_half.h"
 
 union FI {
   float f;

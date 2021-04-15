@@ -14,11 +14,11 @@
 // limitations under the License.
 //
 
-#include <stdio.h>
-
 #if defined(_WIN32)
 #include "CL/cl_dx9_media_sharing.h"
 #endif
+
+#include <stdio.h>
 
 int main( void )
 {

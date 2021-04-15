@@ -14,8 +14,6 @@
 // limitations under the License.
 //
 
-#include <stdio.h>
-
 #define CL_USE_DEPRECATED_OPENCL_1_0_APIS
 #define CL_USE_DEPRECATED_OPENCL_1_1_APIS
 #define CL_USE_DEPRECATED_OPENCL_1_2_APIS
@@ -23,6 +21,8 @@
 #define CL_USE_DEPRECATED_OPENCL_2_1_APIS
 #define CL_USE_DEPRECATED_OPENCL_2_2_APIS
 #include "CL/cl_icd.h"
+
+#include <stdio.h>
 
 int main( void )
 {
