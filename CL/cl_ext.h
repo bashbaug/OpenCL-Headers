@@ -208,6 +208,21 @@ clCreateProgramWithILKHR_fn)(
 #define CL_CONTEXT_MEMORY_INITIALIZE_KHR                    0x2030
 
 /***************************************************************
+* cl_khr_integer_dot_product
+***************************************************************/
+#define cl_khr_integer_dot_product 1
+#define CL_KHR_INTEGER_DOT_PRODUCT "cl_khr_integer_dot_product"
+
+typedef cl_bitfield         cl_device_integer_dot_product_capabilities_khr;
+
+/* cl_device_integer_dot_product_capabilities_khr */
+#define CL_DEVICE_INTEGER_DOT_PRODUCT_INPUT_4x8BIT_PACKED_KHR (1 << 0)
+#define CL_DEVICE_INTEGER_DOT_PRODUCT_INPUT_4x8BIT_KHR      (1 << 1)
+
+/* cl_device_info */
+#define CL_DEVICE_INTEGER_DOT_PRODUCT_CAPABILITIES_KHR      0x1073
+
+/***************************************************************
 * cl_khr_mipmap_image
 ***************************************************************/
 #define cl_khr_mipmap_image 1
@@ -217,6 +232,22 @@ clCreateProgramWithILKHR_fn)(
 #define CL_SAMPLER_MIP_FILTER_MODE_KHR                      0x1155
 #define CL_SAMPLER_LOD_MIN_KHR                              0x1156
 #define CL_SAMPLER_LOD_MAX_KHR                              0x1157
+
+/***************************************************************
+* cl_khr_pci_bus_info
+***************************************************************/
+#define cl_khr_pci_bus_info 1
+#define CL_KHR_PCI_BUS_INFO "cl_khr_pci_bus_info"
+
+typedef struct _cl_device_pci_bus_info_khr {
+    cl_uint pci_domain;
+    cl_uint pci_bus;
+    cl_uint pci_device;
+    cl_uint pci_function;
+} cl_device_pci_bus_info_khr;
+
+/* cl_device_info */
+#define CL_DEVICE_PCI_BUS_INFO_KHR                          0x410F
 
 /***************************************************************
 * cl_khr_priority_hints
@@ -293,6 +324,31 @@ clGetKernelSubGroupInfoKHR_fn)(
     size_t param_value_size,
     void* param_value,
     size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_2_0_DEPRECATED;
+
+/***************************************************************
+* cl_khr_suggested_local_work_size
+***************************************************************/
+#define cl_khr_suggested_local_work_size 1
+#define CL_KHR_SUGGESTED_LOCAL_WORK_SIZE "cl_khr_suggested_local_work_size"
+
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clGetKernelSuggestedLocalWorkSizeKHR(
+    cl_command_queue command_queue,
+    cl_kernel kernel,
+    cl_uint work_dim,
+    const size_t* global_work_offset,
+    const size_t* global_work_size,
+    size_t* suggested_local_work_size) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clGetKernelSuggestedLocalWorkSizeKHR_fn)(
+    cl_command_queue command_queue,
+    cl_kernel kernel,
+    cl_uint work_dim,
+    const size_t* global_work_offset,
+    const size_t* global_work_size,
+    size_t* suggested_local_work_size) CL_API_SUFFIX__VERSION_3_0;
 
 /***************************************************************
 * cl_khr_terminate_context
@@ -1461,6 +1517,12 @@ typedef struct _cl_motion_estimation_desc_intel {
 
 /* cl_kernel_sub_group_info */
 #define CL_KERNEL_COMPILE_SUB_GROUP_SIZE_INTEL              0x410A
+
+/***************************************************************
+* cl_intel_sharing_format_query
+***************************************************************/
+#define cl_intel_sharing_format_query 1
+#define CL_INTEL_SHARING_FORMAT_QUERY "cl_intel_sharing_format_query"
 
 /***************************************************************
 * cl_intel_simultaneous_sharing

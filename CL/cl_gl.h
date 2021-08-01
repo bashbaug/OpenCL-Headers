@@ -289,6 +289,7 @@ clCreateFromGLTexture3D_fn)(
 * cl_intel_sharing_format_query_gl
 ***************************************************************/
 #define cl_intel_sharing_format_query_gl 1
+#define CL_INTEL_SHARING_FORMAT_QUERY_GL "cl_intel_sharing_format_query_gl"
 
 /* when cl_khr_gl_sharing is supported */
 

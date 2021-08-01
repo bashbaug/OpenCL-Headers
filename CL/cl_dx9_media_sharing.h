@@ -270,6 +270,7 @@ clEnqueueReleaseDX9ObjectsINTEL_fn)(
 * cl_intel_sharing_format_query_dx9
 ***************************************************************/
 #define cl_intel_sharing_format_query_dx9 1
+#define CL_INTEL_SHARING_FORMAT_QUERY_DX9 "cl_intel_sharing_format_query_dx9"
 
 /* when cl_khr_dx9_media_sharing or cl_intel_dx9_media_sharing is supported */
 

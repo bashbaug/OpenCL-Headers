@@ -180,6 +180,7 @@ clEnqueueReleaseD3D10ObjectsKHR_fn)(
 * cl_intel_sharing_format_query_d3d10
 ***************************************************************/
 #define cl_intel_sharing_format_query_d3d10 1
+#define CL_INTEL_SHARING_FORMAT_QUERY_D3D10 "cl_intel_sharing_format_query_d3d10"
 
 /* when cl_khr_d3d10_sharing is supported */
 
