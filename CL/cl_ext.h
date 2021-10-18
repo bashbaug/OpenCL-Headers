@@ -130,6 +130,200 @@ typedef struct _cl_name_version_khr {
 #define CL_DEVICE_BUILT_IN_KERNELS_WITH_VERSION_KHR         0x1062
 
 /***************************************************************
+* cl_khr_external_memory
+***************************************************************/
+#define cl_khr_external_memory 1
+#define CL_KHR_EXTERNAL_MEMORY_EXTENSION_NAME \
+    "cl_khr_external_memory"
+
+typedef cl_uint             cl_external_memory_handle_type_khr;
+
+/* cl_platform_info */
+#define CL_PLATFORM_EXTERNAL_MEMORY_IMPORT_HANDLE_TYPES_KHR 0x2044
+
+/* cl_device_info */
+#define CL_DEVICE_EXTERNAL_MEMORY_IMPORT_HANDLE_TYPES_KHR   0x204F
+
+/* cl_mem_properties */
+#define CL_DEVICE_HANDLE_LIST_KHR                           0x2051
+#define CL_DEVICE_HANDLE_LIST_END_KHR                       0
+
+/* cl_command_type */
+#define CL_COMMAND_ACQUIRE_EXTERNAL_MEM_OBJECTS_KHR         0x2047
+#define CL_COMMAND_RELEASE_EXTERNAL_MEM_OBJECTS_KHR         0x2048
+
+
+typedef cl_int (CL_API_CALL *
+clEnqueueAcquireExternalMemObjectsKHR_fn)(
+    cl_command_queue command_queue,
+    cl_uint num_mem_objects,
+    const cl_mem* mem_objects,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clEnqueueReleaseExternalMemObjectsKHR_fn)(
+    cl_command_queue command_queue,
+    cl_uint num_mem_objects,
+    const cl_mem* mem_objects,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+#ifndef CL_NO_PROTOTYPES
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clEnqueueAcquireExternalMemObjectsKHR(
+    cl_command_queue command_queue,
+    cl_uint num_mem_objects,
+    const cl_mem* mem_objects,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clEnqueueReleaseExternalMemObjectsKHR(
+    cl_command_queue command_queue,
+    cl_uint num_mem_objects,
+    const cl_mem* mem_objects,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+#endif /* CL_NO_PROTOTYPES */
+
+/***************************************************************
+* cl_khr_external_memory_dma_buf
+***************************************************************/
+#define cl_khr_external_memory_dma_buf 1
+#define CL_KHR_EXTERNAL_MEMORY_DMA_BUF_EXTENSION_NAME \
+    "cl_khr_external_memory_dma_buf"
+
+/* cl_external_memory_handle_type_khr */
+#define CL_EXTERNAL_MEMORY_HANDLE_DMA_BUF_KHR               0x2067
+
+/***************************************************************
+* cl_khr_external_memory_dx
+***************************************************************/
+#define cl_khr_external_memory_dx 1
+#define CL_KHR_EXTERNAL_MEMORY_DX_EXTENSION_NAME \
+    "cl_khr_external_memory_dx"
+
+/* cl_external_memory_handle_type_khr */
+#define CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KHR         0x2063
+#define CL_EXTERNAL_MEMORY_HANDLE_D3D11_TEXTURE_KMT_KHR     0x2064
+#define CL_EXTERNAL_MEMORY_HANDLE_D3D12_HEAP_KHR            0x2065
+#define CL_EXTERNAL_MEMORY_HANDLE_D3D12_RESOURCE_KHR        0x2066
+
+/***************************************************************
+* cl_khr_external_memory_opaque_fd
+***************************************************************/
+#define cl_khr_external_memory_opaque_fd 1
+#define CL_KHR_EXTERNAL_MEMORY_OPAQUE_FD_EXTENSION_NAME \
+    "cl_khr_external_memory_opaque_fd"
+
+/* cl_external_memory_handle_type_khr */
+#define CL_EXTERNAL_MEMORY_HANDLE_OPAQUE_FD_KHR             0x2060
+
+/***************************************************************
+* cl_khr_external_memory_win32
+***************************************************************/
+#define cl_khr_external_memory_win32 1
+#define CL_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME \
+    "cl_khr_external_memory_win32"
+
+/* cl_external_memory_handle_type_khr */
+#define CL_EXTERNAL_MEMORY_HANDLE_OPAQUE_WIN32_KHR          0x2061
+#define CL_EXTERNAL_MEMORY_HANDLE_OPAQUE_WIN32_KMT_KHR      0x2062
+
+/***************************************************************
+* cl_khr_external_semaphore
+***************************************************************/
+#define cl_khr_external_semaphore 1
+#define CL_KHR_EXTERNAL_SEMAPHORE_EXTENSION_NAME \
+    "cl_khr_external_semaphore"
+
+typedef struct _cl_semaphore_khr * cl_semaphore_khr;
+typedef cl_uint             cl_external_semaphore_handle_type_khr;
+
+/* cl_platform_info */
+#define CL_PLATFORM_SEMAPHORE_IMPORT_HANDLE_TYPES_KHR       0x2037
+#define CL_PLATFORM_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR       0x2038
+
+/* cl_device_info */
+#define CL_DEVICE_SEMAPHORE_IMPORT_HANDLE_TYPES_KHR         0x204D
+#define CL_DEVICE_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR         0x204E
+
+/* cl_semaphore_properties_khr */
+#define CL_SEMAPHORE_EXPORT_HANDLE_TYPES_KHR                0x203F
+#define CL_SEMAPHORE_EXPORT_HANDLE_TYPES_LIST_END_KHR       0
+
+
+typedef cl_int (CL_API_CALL *
+clGetSemaphoreHandleForTypeKHR_fn)(
+    cl_semaphore_khr sema_object,
+    cl_device_id device,
+    cl_external_semaphore_handle_type_khr handle_type,
+    size_t handle_size,
+    void* handle_ptr,
+    size_t* handle_size_ret) CL_API_SUFFIX__VERSION_3_0;
+
+#ifndef CL_NO_PROTOTYPES
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clGetSemaphoreHandleForTypeKHR(
+    cl_semaphore_khr sema_object,
+    cl_device_id device,
+    cl_external_semaphore_handle_type_khr handle_type,
+    size_t handle_size,
+    void* handle_ptr,
+    size_t* handle_size_ret) CL_API_SUFFIX__VERSION_3_0;
+
+#endif /* CL_NO_PROTOTYPES */
+
+/***************************************************************
+* cl_khr_external_semaphore_dx_fence
+***************************************************************/
+#define cl_khr_external_semaphore_dx_fence 1
+#define CL_KHR_EXTERNAL_SEMAPHORE_DX_FENCE_EXTENSION_NAME \
+    "cl_khr_external_semaphore_dx_fence"
+
+/* cl_external_semaphore_handle_type_khr */
+#define CL_SEMAPHORE_HANDLE_D3D12_FENCE_KHR                 0x2059
+
+/***************************************************************
+* cl_khr_external_semaphore_opaque_fd
+***************************************************************/
+#define cl_khr_external_semaphore_opaque_fd 1
+#define CL_KHR_EXTERNAL_SEMAPHORE_OPAQUE_FD_EXTENSION_NAME \
+    "cl_khr_external_semaphore_opaque_fd"
+
+/* cl_external_semaphore_handle_type_khr */
+#define CL_SEMAPHORE_HANDLE_OPAQUE_FD_KHR                   0x2055
+
+/***************************************************************
+* cl_khr_external_semaphore_sync_fd
+***************************************************************/
+#define cl_khr_external_semaphore_sync_fd 1
+#define CL_KHR_EXTERNAL_SEMAPHORE_SYNC_FD_EXTENSION_NAME \
+    "cl_khr_external_semaphore_sync_fd"
+
+/* cl_external_semaphore_handle_type_khr */
+#define CL_SEMAPHORE_HANDLE_SYNC_FD_KHR                     0x2058
+
+/***************************************************************
+* cl_khr_external_semaphore_win32
+***************************************************************/
+#define cl_khr_external_semaphore_win32 1
+#define CL_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME \
+    "cl_khr_external_semaphore_win32"
+
+/* cl_external_semaphore_handle_type_khr */
+#define CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KHR                0x2056
+#define CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KMT_KHR            0x2057
+
+/***************************************************************
 * cl_khr_fp16
 ***************************************************************/
 #define cl_khr_fp16 1
@@ -307,6 +501,135 @@ typedef cl_uint             cl_queue_priority_khr;
 #define CL_QUEUE_PRIORITY_HIGH_KHR                          (1 << 0)
 #define CL_QUEUE_PRIORITY_MED_KHR                           (1 << 1)
 #define CL_QUEUE_PRIORITY_LOW_KHR                           (1 << 2)
+
+/***************************************************************
+* cl_khr_semaphore
+***************************************************************/
+#define cl_khr_semaphore 1
+#define CL_KHR_SEMAPHORE_EXTENSION_NAME \
+    "cl_khr_semaphore"
+
+/* type cl_semaphore_khr */
+typedef cl_properties       cl_semaphore_properties_khr;
+typedef cl_uint             cl_semaphore_info_khr;
+typedef cl_uint             cl_semaphore_type_khr;
+typedef cl_ulong            cl_semaphore_payload_khr;
+
+/* cl_semaphore_type */
+#define CL_SEMAPHORE_TYPE_BINARY_KHR                        1
+
+/* cl_platform_info */
+#define CL_PLATFORM_SEMAPHORE_TYPES_KHR                     0x2036
+
+/* cl_device_info */
+#define CL_DEVICE_SEMAPHORE_TYPES_KHR                       0x204C
+
+/* cl_semaphore_info_khr */
+#define CL_SEMAPHORE_CONTEXT_KHR                            0x2039
+#define CL_SEMAPHORE_REFERENCE_COUNT_KHR                    0x203A
+#define CL_SEMAPHORE_PROPERTIES_KHR                         0x203B
+#define CL_SEMAPHORE_PAYLOAD_KHR                            0x203C
+
+/* cl_semaphore_info_khr or cl_semaphore_properties_khr */
+#define CL_SEMAPHORE_TYPE_KHR                               0x203D
+/* enum CL_DEVICE_HANDLE_LIST_KHR */
+/* enum CL_DEVICE_HANDLE_LIST_END_KHR */
+
+/* cl_command_type */
+#define CL_COMMAND_SEMAPHORE_WAIT_KHR                       0x2042
+#define CL_COMMAND_SEMAPHORE_SIGNAL_KHR                     0x2043
+
+/* Error codes */
+#define CL_INVALID_SEMAPHORE_KHR                            -1142
+
+
+typedef cl_semaphore_khr (CL_API_CALL *
+clCreateSemaphoreWithPropertiesKHR_fn)(
+    cl_context context,
+    const cl_semaphore_properties_khr* sema_props,
+    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clEnqueueWaitSemaphoresKHR_fn)(
+    cl_command_queue command_queue,
+    cl_uint num_sema_objects,
+    const cl_semaphore_khr* sema_objects,
+    const cl_semaphore_payload_khr* sema_payload_list,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clEnqueueSignalSemaphoresKHR_fn)(
+    cl_command_queue command_queue,
+    cl_uint num_sema_objects,
+    const cl_semaphore_khr* sema_objects,
+    const cl_semaphore_payload_khr* sema_payload_list,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clGetSemaphoreInfoKHR_fn)(
+    cl_semaphore_khr sema_object,
+    cl_semaphore_info_khr param_name,
+    size_t param_value_size,
+    void* param_value,
+    size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clReleaseSemaphoreKHR_fn)(
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+
+typedef cl_int (CL_API_CALL *
+clRetainSemaphoreKHR_fn)(
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+
+#ifndef CL_NO_PROTOTYPES
+
+extern CL_API_ENTRY cl_semaphore_khr CL_API_CALL
+clCreateSemaphoreWithPropertiesKHR(
+    cl_context context,
+    const cl_semaphore_properties_khr* sema_props,
+    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_3_0;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clEnqueueWaitSemaphoresKHR(
+    cl_command_queue command_queue,
+    cl_uint num_sema_objects,
+    const cl_semaphore_khr* sema_objects,
+    const cl_semaphore_payload_khr* sema_payload_list,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clEnqueueSignalSemaphoresKHR(
+    cl_command_queue command_queue,
+    cl_uint num_sema_objects,
+    const cl_semaphore_khr* sema_objects,
+    const cl_semaphore_payload_khr* sema_payload_list,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clGetSemaphoreInfoKHR(
+    cl_semaphore_khr sema_object,
+    cl_semaphore_info_khr param_name,
+    size_t param_value_size,
+    void* param_value,
+    size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_3_0;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clReleaseSemaphoreKHR(
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clRetainSemaphoreKHR(
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+
+#endif /* CL_NO_PROTOTYPES */
 
 /***************************************************************
 * cl_khr_spir
@@ -1355,6 +1678,28 @@ clCreateBufferWithPropertiesINTEL(
 #endif /* CL_NO_PROTOTYPES */
 
 /***************************************************************
+* cl_intel_device_attribute_query
+***************************************************************/
+#define cl_intel_device_attribute_query 1
+#define CL_INTEL_DEVICE_ATTRIBUTE_QUERY_EXTENSION_NAME \
+    "cl_intel_device_attribute_query"
+
+typedef cl_bitfield         cl_device_feature_capabilities_intel;
+
+/* cl_device_feature_capabilities_intel */
+#define CL_DEVICE_FEATURE_FLAG_DP4A_INTEL                   (1 << 0)
+#define CL_DEVICE_FEATURE_FLAG_DPAS_INTEL                   (1 << 1)
+
+/* cl_device_info */
+#define CL_DEVICE_IP_VERSION_INTEL                          0x4250
+#define CL_DEVICE_ID_INTEL                                  0x4251
+#define CL_DEVICE_NUM_SLICES_INTEL                          0x4252
+#define CL_DEVICE_NUM_SUB_SLICES_PER_SLICE_INTEL            0x4253
+#define CL_DEVICE_NUM_EUS_PER_SUB_SLICE_INTEL               0x4254
+#define CL_DEVICE_NUM_THREADS_PER_EU_INTEL                  0x4255
+#define CL_DEVICE_FEATURE_CAPABILITIES_INTEL                0x4256
+
+/***************************************************************
 * cl_intel_device_partition_by_names
 ***************************************************************/
 #define cl_intel_device_partition_by_names 1
@@ -1970,6 +2315,28 @@ clEnqueueMigrateMemINTEL(
 #define CL_DEVICE_GPU_OVERLAP_NV                            0x4004
 #define CL_DEVICE_KERNEL_EXEC_TIMEOUT_NV                    0x4005
 #define CL_DEVICE_INTEGRATED_MEMORY_NV                      0x4006
+
+/***************************************************************
+* cl_pocl_content_size
+***************************************************************/
+#define cl_pocl_content_size 1
+#define CL_POCL_CONTENT_SIZE_EXTENSION_NAME \
+    "cl_pocl_content_size"
+
+
+typedef cl_int (CL_API_CALL *
+clSetContentSizeBufferPoCL_fn)(
+    cl_mem buffer,
+    cl_mem content_size_buffer) CL_API_SUFFIX__VERSION_1_0;
+
+#ifndef CL_NO_PROTOTYPES
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clSetContentSizeBufferPoCL(
+    cl_mem buffer,
+    cl_mem content_size_buffer) CL_API_SUFFIX__VERSION_1_0;
+
+#endif /* CL_NO_PROTOTYPES */
 
 /***************************************************************
 * cl_qcom_android_native_buffer_host_ptr
