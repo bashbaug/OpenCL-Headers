@@ -2827,11 +2827,6 @@ typedef struct _cl_mem_ion_host_ptr {
 /* cl_uint allocation_type */
 #define CL_MEM_ION_HOST_PTR_QCOM                            0x40A8
 
-/***************************************************************
-* cl_intel_sharing_format_query
-***************************************************************/
-#define cl_intel_sharing_format_query 1
-
 #ifdef __cplusplus
 }
 #endif
