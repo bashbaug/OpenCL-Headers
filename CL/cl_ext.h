@@ -39,8 +39,9 @@ typedef struct _cl_command_buffer_khr* cl_command_buffer_khr;
 typedef cl_uint             cl_sync_point_khr;
 typedef cl_uint             cl_command_buffer_info_khr;
 typedef cl_uint             cl_command_buffer_state_khr;
-typedef cl_bitfield         cl_command_buffer_properties_khr;
-typedef cl_bitfield         cl_ndrange_kernel_command_properties_khr;
+typedef cl_properties       cl_command_buffer_properties_khr;
+typedef cl_bitfield         cl_command_buffer_flags_khr;
+typedef cl_properties       cl_ndrange_kernel_command_properties_khr;
 typedef struct _cl_mutable_command_khr* cl_mutable_command_khr;
 
 /* cl_device_info */
@@ -54,7 +55,9 @@ typedef struct _cl_mutable_command_khr* cl_mutable_command_khr;
 #define CL_COMMAND_BUFFER_CAPABILITY_OUT_OF_ORDER_KHR       (1 << 3)
 
 /* cl_command_buffer_properties_khr */
-#define CL_COMMAND_BUFFER_PROPERTIES_KHR                    0x1293
+#define CL_COMMAND_BUFFER_FLAGS_KHR                         0x1293
+
+/* cl_command_buffer_flags_khr - bitfield */
 #define CL_COMMAND_BUFFER_SIMULTANEOUS_USE_KHR              (1 << 0)
 
 /* Error codes */
@@ -645,7 +648,7 @@ clGetSemaphoreHandleForTypeKHR_fn)(
     cl_external_semaphore_handle_type_khr handle_type,
     size_t handle_size,
     void* handle_ptr,
-    size_t* handle_size_ret) CL_API_SUFFIX__VERSION_3_0;
+    size_t* handle_size_ret) CL_API_SUFFIX__VERSION_1_2;
 
 #ifndef CL_NO_PROTOTYPES
 
@@ -656,7 +659,7 @@ clGetSemaphoreHandleForTypeKHR(
     cl_external_semaphore_handle_type_khr handle_type,
     size_t handle_size,
     void* handle_ptr,
-    size_t* handle_size_ret) CL_API_SUFFIX__VERSION_3_0;
+    size_t* handle_size_ret) CL_API_SUFFIX__VERSION_1_2;
 
 #endif /* CL_NO_PROTOTYPES */
 
@@ -925,7 +928,7 @@ typedef cl_semaphore_khr (CL_API_CALL *
 clCreateSemaphoreWithPropertiesKHR_fn)(
     cl_context context,
     const cl_semaphore_properties_khr* sema_props,
-    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_3_0;
+    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_1_2;
 
 typedef cl_int (CL_API_CALL *
 clEnqueueWaitSemaphoresKHR_fn)(
@@ -935,7 +938,7 @@ clEnqueueWaitSemaphoresKHR_fn)(
     const cl_semaphore_payload_khr* sema_payload_list,
     cl_uint num_events_in_wait_list,
     const cl_event* event_wait_list,
-    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+    cl_event* event) CL_API_SUFFIX__VERSION_1_2;
 
 typedef cl_int (CL_API_CALL *
 clEnqueueSignalSemaphoresKHR_fn)(
@@ -945,7 +948,7 @@ clEnqueueSignalSemaphoresKHR_fn)(
     const cl_semaphore_payload_khr* sema_payload_list,
     cl_uint num_events_in_wait_list,
     const cl_event* event_wait_list,
-    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+    cl_event* event) CL_API_SUFFIX__VERSION_1_2;
 
 typedef cl_int (CL_API_CALL *
 clGetSemaphoreInfoKHR_fn)(
@@ -953,15 +956,15 @@ clGetSemaphoreInfoKHR_fn)(
     cl_semaphore_info_khr param_name,
     size_t param_value_size,
     void* param_value,
-    size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_3_0;
+    size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_1_2;
 
 typedef cl_int (CL_API_CALL *
 clReleaseSemaphoreKHR_fn)(
-    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_1_2;
 
 typedef cl_int (CL_API_CALL *
 clRetainSemaphoreKHR_fn)(
-    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_1_2;
 
 #ifndef CL_NO_PROTOTYPES
 
@@ -969,7 +972,7 @@ extern CL_API_ENTRY cl_semaphore_khr CL_API_CALL
 clCreateSemaphoreWithPropertiesKHR(
     cl_context context,
     const cl_semaphore_properties_khr* sema_props,
-    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_3_0;
+    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_1_2;
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueWaitSemaphoresKHR(
@@ -979,7 +982,7 @@ clEnqueueWaitSemaphoresKHR(
     const cl_semaphore_payload_khr* sema_payload_list,
     cl_uint num_events_in_wait_list,
     const cl_event* event_wait_list,
-    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+    cl_event* event) CL_API_SUFFIX__VERSION_1_2;
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueSignalSemaphoresKHR(
@@ -989,7 +992,7 @@ clEnqueueSignalSemaphoresKHR(
     const cl_semaphore_payload_khr* sema_payload_list,
     cl_uint num_events_in_wait_list,
     const cl_event* event_wait_list,
-    cl_event* event) CL_API_SUFFIX__VERSION_3_0;
+    cl_event* event) CL_API_SUFFIX__VERSION_1_2;
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clGetSemaphoreInfoKHR(
@@ -997,15 +1000,15 @@ clGetSemaphoreInfoKHR(
     cl_semaphore_info_khr param_name,
     size_t param_value_size,
     void* param_value,
-    size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_3_0;
+    size_t* param_value_size_ret) CL_API_SUFFIX__VERSION_1_2;
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clReleaseSemaphoreKHR(
-    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_1_2;
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clRetainSemaphoreKHR(
-    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_3_0;
+    cl_semaphore_khr sema_object) CL_API_SUFFIX__VERSION_1_2;
 
 #endif /* CL_NO_PROTOTYPES */
 
@@ -2271,6 +2274,16 @@ typedef cl_uint             cl_diagnostics_verbose_level;
 #define CL_EGL_YUV_PLANE_INTEL                              0x4107
 
 /***************************************************************
+* cl_intel_exec_by_local_thread
+***************************************************************/
+#define cl_intel_exec_by_local_thread 1
+#define CL_INTEL_EXEC_BY_LOCAL_THREAD_EXTENSION_NAME \
+    "cl_intel_exec_by_local_thread"
+
+/* cl_command_queue_properties - bitfield */
+#define CL_QUEUE_THREAD_LOCAL_EXEC_ENABLE_INTEL             (1 << 31)
+
+/***************************************************************
 * cl_intel_mem_channel_property
 ***************************************************************/
 #define cl_intel_mem_channel_property 1
@@ -2392,16 +2405,6 @@ typedef struct _cl_motion_estimation_desc_intel {
 #define CL_DEVICE_NUM_SIMULTANEOUS_INTEROPS_INTEL           0x4105
 
 /***************************************************************
-* cl_intel_thread_local_exec
-***************************************************************/
-#define cl_intel_thread_local_exec 1
-#define CL_INTEL_THREAD_LOCAL_EXEC_EXTENSION_NAME \
-    "cl_intel_thread_local_exec"
-
-/* cl_command_queue_properties - bitfield */
-#define CL_QUEUE_THREAD_LOCAL_EXEC_ENABLE_INTEL             (1 << 31)
-
-/***************************************************************
 * cl_intel_unified_shared_memory
 ***************************************************************/
 #define cl_intel_unified_shared_memory 1
@@ -2433,6 +2436,8 @@ typedef cl_uint             cl_mem_advice_intel;
 
 /* cl_mem_alloc_flags_intel - bitfield */
 #define CL_MEM_ALLOC_WRITE_COMBINED_INTEL                   (1 << 0)
+#define CL_MEM_ALLOC_INITIAL_PLACEMENT_DEVICE_INTEL         (1 << 1)
+#define CL_MEM_ALLOC_INITIAL_PLACEMENT_HOST_INTEL           (1 << 2)
 
 /* cl_mem_alloc_info_intel */
 #define CL_MEM_ALLOC_TYPE_INTEL                             0x419A
@@ -2509,16 +2514,6 @@ clSetKernelArgMemPointerINTEL_fn)(
     cl_kernel kernel,
     cl_uint arg_index,
     const void* arg_value) ;
-
-typedef cl_int (CL_API_CALL *
-clEnqueueMemsetINTEL_fn)(
-    cl_command_queue command_queue,
-    void* dst_ptr,
-    cl_int value,
-    size_t size,
-    cl_uint num_events_in_wait_list,
-    const cl_event* event_wait_list,
-    cl_event* event) ;
 
 typedef cl_int (CL_API_CALL *
 clEnqueueMemFillINTEL_fn)(
@@ -2606,16 +2601,6 @@ clSetKernelArgMemPointerINTEL(
     const void* arg_value) ;
 
 extern CL_API_ENTRY cl_int CL_API_CALL
-clEnqueueMemsetINTEL(
-    cl_command_queue command_queue,
-    void* dst_ptr,
-    cl_int value,
-    size_t size,
-    cl_uint num_events_in_wait_list,
-    const cl_event* event_wait_list,
-    cl_event* event) ;
-
-extern CL_API_ENTRY cl_int CL_API_CALL
 clEnqueueMemFillINTEL(
     cl_command_queue command_queue,
     void* dst_ptr,
@@ -2677,6 +2662,32 @@ clEnqueueMigrateMemINTEL(
 #endif /* CL_NO_PROTOTYPES */
 
 #endif /* defined(CL_VERSION_1_2) */
+
+/* deprecated, use clEnqueueMemFillINTEL instead */
+
+typedef cl_int (CL_API_CALL *
+clEnqueueMemsetINTEL_fn)(
+    cl_command_queue command_queue,
+    void* dst_ptr,
+    cl_int value,
+    size_t size,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) ;
+
+#ifndef CL_NO_PROTOTYPES
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clEnqueueMemsetINTEL(
+    cl_command_queue command_queue,
+    void* dst_ptr,
+    cl_int value,
+    size_t size,
+    cl_uint num_events_in_wait_list,
+    const cl_event* event_wait_list,
+    cl_event* event) ;
+
+#endif /* CL_NO_PROTOTYPES */
 
 /***************************************************************
 * cl_nv_device_attribute_query
