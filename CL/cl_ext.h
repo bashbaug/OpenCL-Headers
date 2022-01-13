@@ -1244,6 +1244,28 @@ clCreateSubDevicesEXT(
 #endif /* CL_NO_PROTOTYPES */
 
 /***************************************************************
+* cl_ext_float_atomics
+***************************************************************/
+#define cl_ext_float_atomics 1
+#define CL_EXT_FLOAT_ATOMICS_EXTENSION_NAME \
+    "cl_ext_float_atomics"
+
+typedef cl_bitfield         cl_device_fp_atomic_capabilities_ext;
+
+/* cl_device_fp_atomic_capabilities_ext */
+#define CL_DEVICE_GLOBAL_FP_ATOMIC_LOAD_STORE_EXT           (1 << 0)
+#define CL_DEVICE_GLOBAL_FP_ATOMIC_ADD_EXT                  (1 << 1)
+#define CL_DEVICE_GLOBAL_FP_ATOMIC_MIN_MAX_EXT              (1 << 2)
+#define CL_DEVICE_LOCAL_FP_ATOMIC_LOAD_STORE_EXT            (1 << 16)
+#define CL_DEVICE_LOCAL_FP_ATOMIC_ADD_EXT                   (1 << 17)
+#define CL_DEVICE_LOCAL_FP_ATOMIC_MIN_MAX_EXT               (1 << 18)
+
+/* cl_device_info */
+#define CL_DEVICE_SINGLE_FP_ATOMIC_CAPABILITIES_EXT         0x4231
+#define CL_DEVICE_DOUBLE_FP_ATOMIC_CAPABILITIES_EXT         0x4232
+#define CL_DEVICE_HALF_FP_ATOMIC_CAPABILITIES_EXT           0x4233
+
+/***************************************************************
 * cl_ext_migrate_memobject
 ***************************************************************/
 #define cl_ext_migrate_memobject 1
@@ -1484,6 +1506,15 @@ clImportMemoryARM(
 /* cl_context_properties */
 #define CL_PRINTF_CALLBACK_ARM                              0x40B0
 #define CL_PRINTF_BUFFERSIZE_ARM                            0x40B1
+
+/***************************************************************
+* cl_arm_protected_memory_allocation
+***************************************************************/
+#define cl_arm_protected_memory_allocation 1
+#define CL_ARM_PROTECTED_MEMORY_ALLOCATION_EXTENSION_NAME \
+    "cl_arm_protected_memory_allocation"
+
+#define CL_MEM_PROTECTED_ALLOC_ARM                          (1ULL << 36)
 
 /***************************************************************
 * cl_arm_scheduling_controls
@@ -2282,6 +2313,19 @@ typedef cl_uint             cl_diagnostics_verbose_level;
 
 /* cl_command_queue_properties - bitfield */
 #define CL_QUEUE_THREAD_LOCAL_EXEC_ENABLE_INTEL             (1 << 31)
+
+/***************************************************************
+* cl_intel_mem_alloc_buffer_location
+***************************************************************/
+#define cl_intel_mem_alloc_buffer_location 1
+#define CL_INTEL_MEM_ALLOC_BUFFER_LOCATION_EXTENSION_NAME \
+    "cl_intel_mem_alloc_buffer_location"
+
+/* cl_mem_properties_intel */
+#define CL_MEM_ALLOC_BUFFER_LOCATION_INTEL                  0x419E
+
+/* cl_mem_alloc_info_intel */
+/* enum CL_MEM_ALLOC_BUFFER_LOCATION_INTEL */
 
 /***************************************************************
 * cl_intel_mem_channel_property
