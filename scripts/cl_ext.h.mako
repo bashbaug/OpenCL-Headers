@@ -251,6 +251,10 @@ extern "C" {
 %  if shouldGenerate(extension.get('name')):
 <%
     name = extension.get('name')
+    if name in exportedextapis:
+        export_guard = 'CL_NO_EXPORTED_PROTOTYPES'
+    else:
+        export_guard = 'CL_NO_EXTENSION_PROTOTYPES'
 %>/***************************************************************
 * ${name}
 ***************************************************************/
@@ -347,7 +351,7 @@ pfn_${api.Name})(
 %        endfor
 %      endif
 
-#ifndef CL_NO_PROTOTYPES
+#ifndef ${export_guard}
 %      for func in block.findall('command'):
 <%
     api = apisigs[func.get('name')]
@@ -363,7 +367,7 @@ ${api.Name}(
 %        endfor
 %      endfor
 
-#endif /* CL_NO_PROTOTYPES */
+#endif /* ${export_guard} */
 %    endif
 %    if block.get('condition'):
 

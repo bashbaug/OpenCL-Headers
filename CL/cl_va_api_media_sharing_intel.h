@@ -48,7 +48,7 @@ clGetSupportedVA_APIMediaSurfaceFormatsINTEL_fn)(
     VAImageFormat* va_api_formats,
     cl_uint* num_surface_formats) ;
 
-#ifndef CL_NO_PROTOTYPES
+#ifndef CL_NO_EXTENSION_PROTOTYPES
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clGetSupportedVA_APIMediaSurfaceFormatsINTEL(
@@ -60,7 +60,7 @@ clGetSupportedVA_APIMediaSurfaceFormatsINTEL(
     VAImageFormat* va_api_formats,
     cl_uint* num_surface_formats) ;
 
-#endif /* CL_NO_PROTOTYPES */
+#endif /* CL_NO_EXTENSION_PROTOTYPES */
 
 /***************************************************************
 * cl_intel_va_api_media_sharing
@@ -135,7 +135,7 @@ clEnqueueReleaseVA_APIMediaSurfacesINTEL_fn)(
     const cl_event* event_wait_list,
     cl_event* event) CL_API_SUFFIX__VERSION_1_2;
 
-#ifndef CL_NO_PROTOTYPES
+#ifndef CL_NO_EXTENSION_PROTOTYPES
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clGetDeviceIDsFromVA_APIMediaAdapterINTEL(
@@ -173,7 +173,7 @@ clEnqueueReleaseVA_APIMediaSurfacesINTEL(
     const cl_event* event_wait_list,
     cl_event* event) CL_API_SUFFIX__VERSION_1_2;
 
-#endif /* CL_NO_PROTOTYPES */
+#endif /* CL_NO_EXTENSION_PROTOTYPES */
 
 #ifdef __cplusplus
 }
