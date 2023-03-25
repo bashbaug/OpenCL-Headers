@@ -665,7 +665,7 @@ clCreateProgramWithILKHR_fn)(
     cl_context context,
     const void* il,
     size_t length,
-    cl_int* errcode_ret) ;
+    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_1_2;
 
 #ifndef CL_NO_PROTOTYPES
 
@@ -674,7 +674,7 @@ clCreateProgramWithILKHR(
     cl_context context,
     const void* il,
     size_t length,
-    cl_int* errcode_ret) ;
+    cl_int* errcode_ret) CL_API_SUFFIX__VERSION_1_2;
 
 #endif /* CL_NO_PROTOTYPES */
 
