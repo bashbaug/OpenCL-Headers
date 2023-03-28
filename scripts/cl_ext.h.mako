@@ -251,10 +251,10 @@ extern "C" {
 %  if shouldGenerate(extension.get('name')):
 <%
     name = extension.get('name')
-    if name in exportedextapis:
-        export_guard = 'CL_NO_EXPORTED_PROTOTYPES'
+    if name in dispatchedextapis:
+        export_guard = 'CL_NO_DISPATCHED_EXTENSION_API_PROTOTYPES'
     else:
-        export_guard = 'CL_NO_EXTENSION_PROTOTYPES'
+        export_guard = 'CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES'
 %>/***************************************************************
 * ${name}
 ***************************************************************/
