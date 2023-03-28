@@ -82,7 +82,7 @@ pfn_clInitLayer)(
     cl_uint* num_entries_ret,
     const cl_icd_dispatch** layer_dispatch_ret) ;
 
-#ifndef CL_NO_PROTOTYPES
+#ifndef CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clGetLayerInfo(
@@ -98,7 +98,7 @@ clInitLayer(
     cl_uint* num_entries_ret,
     const cl_icd_dispatch** layer_dispatch_ret) ;
 
-#endif /* CL_NO_PROTOTYPES */
+#endif /* CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES */
 
 #ifdef __cplusplus
 }

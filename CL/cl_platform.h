@@ -1401,6 +1401,26 @@ typedef union
 #define  _CL_STRINGIFY( _x )                __CL_STRINGIFY( _x )
 #define  CL_PROGRAM_STRING_DEBUG_INFO       "#line "  _CL_STRINGIFY(__LINE__) " \"" __FILE__ "\" \n\n"
 
+/* Macro to deactivate funciton prototype declarations. */
+
+#ifdef CL_NO_PROTOTYPES
+#ifndef CL_NO_CORE_API_PROTOTYPES
+#define CL_NO_CORE_API_PROTOTYPES
+#endif
+#ifndef CL_NO_EXTENSION_API_PROTOTYPES
+#define CL_NO_EXTENSION_API_PROTOTYPES
+#endif
+#endif
+
+#ifdef CL_NO_EXTENSION_API_PROTOTYPES
+#ifndef CL_NO_DISPATCHED_EXTENSION_API_PROTOTYPES
+#define CL_NO_DISPATCHED_EXTENSION_API_PROTOTYPES
+#endif
+#ifndef CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES
+#define CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES
+#endif
+#endif
+
 #ifdef __cplusplus
 }
 #endif

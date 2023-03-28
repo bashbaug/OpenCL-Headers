@@ -131,7 +131,7 @@ clEnqueueReleaseD3D10ObjectsKHR_fn)(
     const cl_event* event_wait_list,
     cl_event* event) CL_API_SUFFIX__VERSION_1_0;
 
-#ifndef CL_NO_PROTOTYPES
+#ifndef CL_NO_DISPATCHED_EXTENSION_API_PROTOTYPES
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clGetDeviceIDsFromD3D10KHR(
@@ -184,7 +184,7 @@ clEnqueueReleaseD3D10ObjectsKHR(
     const cl_event* event_wait_list,
     cl_event* event) CL_API_SUFFIX__VERSION_1_0;
 
-#endif /* CL_NO_PROTOTYPES */
+#endif /* CL_NO_DISPATCHED_EXTENSION_API_PROTOTYPES */
 
 /***************************************************************
 * cl_intel_sharing_format_query_d3d10
@@ -204,7 +204,7 @@ clGetSupportedD3D10TextureFormatsINTEL_fn)(
     DXGI_FORMAT* d3d10_formats,
     cl_uint* num_texture_formats) ;
 
-#ifndef CL_NO_PROTOTYPES
+#ifndef CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES
 
 extern CL_API_ENTRY cl_int CL_API_CALL
 clGetSupportedD3D10TextureFormatsINTEL(
@@ -215,7 +215,7 @@ clGetSupportedD3D10TextureFormatsINTEL(
     DXGI_FORMAT* d3d10_formats,
     cl_uint* num_texture_formats) ;
 
-#endif /* CL_NO_PROTOTYPES */
+#endif /* CL_NO_NON_DISPATCHED_EXTENSION_API_PROTOTYPES */
 
 #ifdef __cplusplus
 }

@@ -55,6 +55,7 @@ if __name__ == "__main__":
     apisigs = gen.get_apisigs(spec)
 
     coreapis = gen.get_coreapis(spec, apisigs)
+    dispatchedextapis = gen.get_dispatchedextapis(spec, apisigs)
     extapis = gen.get_extapis(spec, apisigs)
 
     try:
@@ -79,6 +80,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -100,6 +102,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -121,6 +124,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -138,6 +142,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -161,6 +166,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -179,6 +185,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -200,6 +207,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
 
@@ -217,6 +225,7 @@ if __name__ == "__main__":
               enums=enums,
               apisigs=apisigs,
               coreapis=coreapis,
+              dispatchedextapis=dispatchedextapis,
               extapis=extapis).
           encode('utf-8', 'replace'))
     except:

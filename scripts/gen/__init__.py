@@ -193,6 +193,30 @@ def get_coreapis(spec, apisigs):
         coreapis[version] = alist
     return coreapis
 
+def get_dispatchedextapis(spec, apisigs):
+    icdextensions = {
+        'cl_ext_device_fission',
+        'cl_khr_d3d10_sharing',
+        'cl_khr_d3d11_sharing',
+        'cl_khr_dx9_media_sharing',
+        'cl_khr_egl_event',
+        'cl_khr_egl_image',
+        'cl_khr_gl_event',
+        'cl_khr_gl_sharing',
+        'cl_khr_subgroups'
+    }
+    dispatchedextapis = OrderedDict()
+    print('Generating exported API extensions dictionary...')
+    for feature in spec.findall('extensions/extension'):
+        extension = noneStr(feature.get('name'))
+        if extension in icdextensions:
+            alist = []
+            for function in feature.findall('require/command'):
+                name = function.get('name')
+                alist.append(apisigs[name])
+            dispatchedextapis[extension] = alist
+    return dispatchedextapis
+
 def get_extapis(spec, apisigs):
     extapis = OrderedDict()
     print('Generating API extensions dictionary...')
