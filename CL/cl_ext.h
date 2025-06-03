@@ -45,8 +45,10 @@ extern "C" {
 #endif
 
 /***************************************************************
-* cl_khr_command_buffer
+* cl_khr_command_buffer (beta)
 ***************************************************************/
+#if defined(CL_ENABLE_BETA_EXTENSIONS)
+
 #define cl_khr_command_buffer 1
 #define CL_KHR_COMMAND_BUFFER_EXTENSION_NAME \
     "cl_khr_command_buffer"
@@ -555,9 +557,13 @@ clCommandSVMMemFillKHR(
 
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
 
+#endif /* defined(CL_ENABLE_BETA_EXTENSIONS) */
+
 /***************************************************************
-* cl_khr_command_buffer_multi_device
+* cl_khr_command_buffer_multi_device (beta)
 ***************************************************************/
+#if defined(CL_ENABLE_BETA_EXTENSIONS)
+
 #define cl_khr_command_buffer_multi_device 1
 #define CL_KHR_COMMAND_BUFFER_MULTI_DEVICE_EXTENSION_NAME \
     "cl_khr_command_buffer_multi_device"
@@ -615,9 +621,13 @@ clRemapCommandBufferKHR(
 
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
 
+#endif /* defined(CL_ENABLE_BETA_EXTENSIONS) */
+
 /***************************************************************
-* cl_khr_command_buffer_mutable_dispatch
+* cl_khr_command_buffer_mutable_dispatch (beta)
 ***************************************************************/
+#if defined(CL_ENABLE_BETA_EXTENSIONS)
+
 #define cl_khr_command_buffer_mutable_dispatch 1
 #define CL_KHR_COMMAND_BUFFER_MUTABLE_DISPATCH_EXTENSION_NAME \
     "cl_khr_command_buffer_mutable_dispatch"
@@ -735,6 +745,8 @@ clGetMutableCommandInfoKHR(
     size_t* param_value_size_ret) ;
 
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
+
+#endif /* defined(CL_ENABLE_BETA_EXTENSIONS) */
 
 /***************************************************************
 * cl_khr_fp64
@@ -869,13 +881,20 @@ clLogMessagesToStderrAPPLE(
     "cl_khr_icd"
 
 
-#define CL_KHR_ICD_EXTENSION_VERSION CL_MAKE_VERSION(1, 0, 0)
+#define CL_KHR_ICD_EXTENSION_VERSION CL_MAKE_VERSION(2, 0, 0)
 
 /* cl_platform_info */
 #define CL_PLATFORM_ICD_SUFFIX_KHR                          0x0920
 
 /* Error codes */
 #define CL_PLATFORM_NOT_FOUND_KHR                           -1001
+
+/* ICD 2 tag value */
+#if INTPTR_MAX == INT32_MAX
+#define CL_ICD2_TAG_KHR ((intptr_t)0x434C3331)
+#else
+#define CL_ICD2_TAG_KHR ((intptr_t)0x4F50454E434C3331)
+#endif
 
 
 typedef cl_int CL_API_CALL
@@ -887,6 +906,22 @@ clIcdGetPlatformIDsKHR_t(
 typedef clIcdGetPlatformIDsKHR_t *
 clIcdGetPlatformIDsKHR_fn ;
 
+typedef void* CL_API_CALL
+clIcdGetFunctionAddressForPlatformKHR_t(
+    cl_platform_id platform,
+    const char* func_name);
+
+typedef clIcdGetFunctionAddressForPlatformKHR_t *
+clIcdGetFunctionAddressForPlatformKHR_fn ;
+
+typedef cl_int CL_API_CALL
+clIcdSetPlatformDispatchDataKHR_t(
+    cl_platform_id platform,
+    void* dispatch_data);
+
+typedef clIcdSetPlatformDispatchDataKHR_t *
+clIcdSetPlatformDispatchDataKHR_fn ;
+
 #if !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES)
 
 extern CL_API_ENTRY cl_int CL_API_CALL
@@ -894,6 +929,16 @@ clIcdGetPlatformIDsKHR(
     cl_uint num_entries,
     cl_platform_id* platforms,
     cl_uint* num_platforms) ;
+
+extern CL_API_ENTRY void* CL_API_CALL
+clIcdGetFunctionAddressForPlatformKHR(
+    cl_platform_id platform,
+    const char* func_name) ;
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clIcdSetPlatformDispatchDataKHR(
+    cl_platform_id platform,
+    void* dispatch_data) ;
 
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
 
@@ -2048,8 +2093,10 @@ clReImportSemaphoreSyncFdKHR(
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
 
 /***************************************************************
-* cl_khr_external_semaphore_win32
+* cl_khr_external_semaphore_win32 (beta)
 ***************************************************************/
+#if defined(CL_ENABLE_BETA_EXTENSIONS)
+
 #define cl_khr_external_semaphore_win32 1
 #define CL_KHR_EXTERNAL_SEMAPHORE_WIN32_EXTENSION_NAME \
     "cl_khr_external_semaphore_win32"
@@ -2061,6 +2108,8 @@ clReImportSemaphoreSyncFdKHR(
 #define CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KHR                0x2056
 #define CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_KMT_KHR            0x2057
 #define CL_SEMAPHORE_HANDLE_OPAQUE_WIN32_NAME_KHR           0x2068
+
+#endif /* defined(CL_ENABLE_BETA_EXTENSIONS) */
 
 /***************************************************************
 * cl_khr_semaphore
@@ -3987,8 +4036,10 @@ clSetContentSizeBufferPoCL(
 #define CL_KHR_INT64_EXTENDED_ATOMICS_EXTENSION_VERSION CL_MAKE_VERSION(1, 0, 0)
 
 /***************************************************************
-* cl_khr_kernel_clock
+* cl_khr_kernel_clock (beta)
 ***************************************************************/
+#if defined(CL_ENABLE_BETA_EXTENSIONS)
+
 #define cl_khr_kernel_clock 1
 #define CL_KHR_KERNEL_CLOCK_EXTENSION_NAME \
     "cl_khr_kernel_clock"
@@ -4005,6 +4056,8 @@ typedef cl_bitfield         cl_device_kernel_clock_capabilities_khr;
 #define CL_DEVICE_KERNEL_CLOCK_SCOPE_DEVICE_KHR             (1 << 0)
 #define CL_DEVICE_KERNEL_CLOCK_SCOPE_WORK_GROUP_KHR         (1 << 1)
 #define CL_DEVICE_KERNEL_CLOCK_SCOPE_SUB_GROUP_KHR          (1 << 2)
+
+#endif /* defined(CL_ENABLE_BETA_EXTENSIONS) */
 
 /***************************************************************
 * cl_khr_local_int32_base_atomics
@@ -4446,6 +4499,37 @@ clSetKernelArgDevicePointerEXT(
 #define CL_UNORM_INT_2_101010_EXT                           0x10E5
 
 /***************************************************************
+* cl_ext_image_unsigned_10x6_12x4_14x2
+***************************************************************/
+#define cl_ext_image_unsigned_10x6_12x4_14x2 1
+#define CL_EXT_IMAGE_UNSIGNED_10X6_12X4_14X2_EXTENSION_NAME \
+    "cl_ext_image_unsigned_10x6_12x4_14x2"
+
+
+#define CL_EXT_IMAGE_UNSIGNED_10X6_12X4_14X2_EXTENSION_VERSION CL_MAKE_VERSION(1, 0, 0)
+
+/* cl_channel_type */
+#define CL_UNSIGNED_INT10X6_EXT                             0x10E6
+#define CL_UNSIGNED_INT12X4_EXT                             0x10E7
+#define CL_UNSIGNED_INT14X2_EXT                             0x10E8
+#define CL_UNORM_INT10X6_EXT                                0x10E1
+#define CL_UNORM_INT12X4_EXT                                0x10E9
+#define CL_UNORM_INT14X2_EXT                                0x10EA
+
+/***************************************************************
+* cl_ext_immutable_memory_objects
+***************************************************************/
+#define cl_ext_immutable_memory_objects 1
+#define CL_EXT_IMMUTABLE_MEMORY_OBJECTS_EXTENSION_NAME \
+    "cl_ext_immutable_memory_objects"
+
+
+#define CL_EXT_IMMUTABLE_MEMORY_OBJECTS_EXTENSION_VERSION CL_MAKE_VERSION(1, 0, 0)
+
+/* cl_mem_flags */
+#define CL_MEM_IMMUTABLE_EXT                                (1 << 6)
+
+/***************************************************************
 * cl_img_cancel_command
 ***************************************************************/
 #define cl_img_cancel_command 1
@@ -4473,6 +4557,44 @@ extern CL_API_ENTRY cl_int CL_API_CALL
 clCancelCommandsIMG(
     const cl_event* event_list,
     size_t num_events_in_list) ;
+
+#endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
+
+/***************************************************************
+* cl_qcom_perf_hint
+***************************************************************/
+#define cl_qcom_perf_hint 1
+#define CL_QCOM_PERF_HINT_EXTENSION_NAME \
+    "cl_qcom_perf_hint"
+
+
+#define CL_QCOM_PERF_HINT_EXTENSION_VERSION CL_MAKE_VERSION(1, 0, 5)
+
+typedef cl_uint             cl_perf_hint_qcom;
+
+/* cl_perf_hint_qcom */
+#define CL_PERF_HINT_HIGH_QCOM                              0x40C3
+#define CL_PERF_HINT_NORMAL_QCOM                            0x40C4
+#define CL_PERF_HINT_LOW_QCOM                               0x40C5
+
+/* cl_context_info */
+#define CL_CONTEXT_PERF_HINT_QCOM                           0x40C2
+
+
+typedef cl_int CL_API_CALL
+clSetPerfHintQCOM_t(
+    cl_context context,
+    cl_perf_hint_qcom perf_hint);
+
+typedef clSetPerfHintQCOM_t *
+clSetPerfHintQCOM_fn ;
+
+#if !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES)
+
+extern CL_API_ENTRY cl_int CL_API_CALL
+clSetPerfHintQCOM(
+    cl_context context,
+    cl_perf_hint_qcom perf_hint) ;
 
 #endif /* !defined(CL_NO_NON_ICD_DISPATCH_EXTENSION_PROTOTYPES) */
 
